@@ -1,5 +1,30 @@
-* 状态管理器？
-  - Channel 生命周期内 唯一实例
-  - 统一管理一个连接的生命周期
-    - stage 0 init
-    - stage 1 ...
+* 配置服务
+  1. 文件地址 src/main/resources/config.json
+     #+BEGIN_SRC 
+     {
+         "timeout": 60,
+         "portInfo":[
+             {"port":17990, "password":"key", "method":"aes-128-cfb"},
+             {"port":17991, "password":"key1", "method":"aes-256-cfb"},
+             {"port":17992, "password":"key2", "method":"aes-256-gcm"}
+         ]
+     }
+     #+END_SRC
+  2. 说明
+     - timeout 超时时间
+     - portInfo 开启服务的端口信息
+       - prot 端口号
+       - password 端口对应密码
+       - method 端口对应的加密方式
+* 打包
+  1. 生成可直接运行的jar
+     #+BEGIN_SRC 
+     # 清理项目
+     mvn clean
+     # 生成单一jar包 会将项目以来的jar包一同打入包中
+     mvn package assembly:single
+     #+END_SRC
+* 运行
+  #+BEGIN_SRC 
+  java -jar shadowsocks-java.jar
+  #+END_SRC
