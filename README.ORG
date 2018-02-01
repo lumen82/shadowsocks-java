@@ -16,12 +16,19 @@
        - prot 端口号
        - password 端口对应密码
        - method 端口对应的加密方式
+  3. 加密方式
+     目前只支持一下三种
+     #+BEGIN_SRC 
+     aes-128-cfb
+     aes-192-cfb
+     aes-256-cfb
+     #+END_SRC
 * 打包
   1. 生成可直接运行的jar
      #+BEGIN_SRC 
      # 清理项目
      mvn clean
-     # 生成单一jar包 会将项目以来的jar包一同打入包中
+     # 生成单一jar包 会将项目依赖的jar包一同打入包中
      mvn package assembly:single
      #+END_SRC
 * 运行
